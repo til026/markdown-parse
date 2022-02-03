@@ -67,4 +67,11 @@ public class MarkdownParseTest {
         List<String> expect = List.of("a link on the first line");
         assertEquals(MarkdownParse.getLinks(contents), expect);
     }
+
+   @Test
+   public void testMyfile() throws IOException {
+        String contents= Files.readString(Path.of("./my-file1.md"));
+        List<String> expect = List.of("(this is [a] link)");
+        assertEquals(MarkdownParse.getLinks(contents), expect);
+   }
 }
