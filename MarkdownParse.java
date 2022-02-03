@@ -19,9 +19,17 @@ public class MarkdownParse {
             if (nextOpenBracket == -1 || nextCloseBracket == -1 || openParen == -1 || closeParen == -1){
                 break;
             }
+            int counter = 0;
+            for (int i = openParen; i < closeParen; i++){
+                if (markdown.charAt(i) == '\n'){
+                    counter +=1;
+                }
+            }
+            if (counter > 1){currentIndex = closeParen + 1; continue;}
             if ((nextOpenBracket == 0 || markdown.charAt(nextOpenBracket-1) != '!') && openParen == nextCloseBracket + 1){
                 toReturn.add(markdown.substring(openParen + 1, closeParen));
             }
+            
             currentIndex = closeParen + 1;
         }
         // System.out.println(currentIndex);
