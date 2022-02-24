@@ -26,7 +26,7 @@ public class MarkdownParse {
                 }
             }
             if (counter > 1){currentIndex = closeParen + 1; continue;}
-            if ((nextOpenBracket == 0 || markdown.charAt(nextOpenBracket-1) != '!') && openParen == nextCloseBracket + 1){
+            if ((nextOpenBracket == 0 || markdown.charAt(nextOpenBracket-1) != '!') && markdown.charAt(openParen-1) == ']'){
                 toReturn.add(markdown.substring(openParen + 1, closeParen));
             }
             //some changes
